@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/65547199/using-bootstrap-5-with-vue-3
+npm install --save bootstrap
+npm install --save @popperjs/core
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"

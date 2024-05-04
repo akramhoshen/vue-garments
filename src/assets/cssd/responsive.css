@@ -1,0 +1,152 @@
+/* ====================
+    Responsive
+=================== */
+
+/* Gallery responsive css */
+@media(max-width:1136px) {
+    .gallery-item {
+        width: 49%;
+    }
+}
+
+@media(max-width:1100px) {
+    .gallery-item {
+        width: 49%;
+    }
+}
+
+
+@media(max-width:1006px) {
+    .gallery-item {
+        width: 49%;
+    }
+}
+
+@media(max-width:576px) {
+    .gallery-item {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .galery-title h2 {
+        text-align: center;
+    }
+    .s-m-w {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.fixed-width{
+        width: 100%;
+       
+    }
+	li.list-item a {
+	padding-right: 18px;
+    }
+     .banner-text {
+	padding-right: 0;
+	padding-top: 52px;
+     padding-left: 20px;
+}
+.banner-img img{
+    width: 400px;
+}
+.title {
+	font-size: 36px;
+    }
+    .grid {
+	grid-template-columns: repeat(2, 1fr);
+}
+.blog-text{
+    margin: 0 15px;
+}
+.team-member {
+	margin: 15px;
+}
+
+    
+}
+
+
+@media only screen and (max-width: 767px) {
+	.fixed-width{
+        width: 100%;
+        padding-left: 15px;
+    }
+	.menu {
+	display: none;
+    }
+    .fa-bars{
+        display: block;
+        padding-left: 20px;
+        font-size: 24px
+    }
+    .button {
+	color: #fff;
+	background: #E02C6D;
+	padding: 8px 16px;
+}
+.login-area {
+	padding-right: 20px;
+}
+    .title {
+	font-size: 36px;
+    }
+    .banner .flex{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .banner-text {
+	padding-right: 0;
+	padding-top: 52px;
+    text-align: center;
+}
+.banner-img img{
+    width: 100%;
+}
+.grid {
+	grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 20px;
+}
+.blogs {
+	margin-top: 70px;
+	margin: 15px;
+}
+.blog-title{
+    font-size: 20px;
+}
+
+footer {
+	margin-top: 50px;
+}
+.foter-logo img {
+	width: 50%;
+}
+
+}
+
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.fixed-width{
+        width: 100%;
+    }
+	.menu {
+	display: none;
+}
+.blogs {
+	margin-top: 70px;
+	margin: 15px;
+}
+
+}
+
+
+
+@media 
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min-device-pixel-ratio: 2) {
+	
+	
+}
