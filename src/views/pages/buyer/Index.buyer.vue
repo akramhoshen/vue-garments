@@ -2,6 +2,8 @@
 import { ref, onMounted,reactive } from 'vue';
 import Http from '@/utils/http';
 import { getCurrentPath } from '@/utils/routerUtils';
+import getImg from '@/utils/imgHttp';
+import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 import Breadcrumb from '@/components/Breadcrumb.vue';
 
 //---Page Header Start---//
@@ -41,23 +43,24 @@ const formDataReset = () =>{
   photoKey.value++; // photoKey to force re-render
 }
 
-const getData = async() =>{
+const getData = async(page = 1) =>{
   try {
-    const res = await Http.get('buyers');
+    const res = await Http.get(`buyers?page=${page}`);
     buyers.value = res.data;
-    // console.log(response.data)
+    // console.log(res.data)
   } catch (error) {
-    console.error('Error fetching items:', error);
+    console.error('Error fetching data:', error);
   }
 }
 
 const storeData = async() =>{
   try {
-    await Http.post('/buyers', formData, {
+    const res = await Http.post('/buyers', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
+    console.log(res.data)
     //show update data
     getData()
     formDataReset()
@@ -76,11 +79,12 @@ const storeData = async() =>{
 
 const updateData = async () => {
   try {
-    await Http.post(`buyers/update/${buyer_id.value}`, formData, {
+    const res = await Http.post(`buyers/update/${buyer_id.value}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
+    console.log(res.data)
     //show update data
     getData();
     formDataReset();
@@ -181,14 +185,15 @@ const handleFileChange = (event) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="buyer in buyers" :key="buyer.id">
+        <tbody class="table-group-divider">
+          <tr v-for="buyer in buyers.data" :key="buyer.id">
             <td>{{ buyer.id }}</td>
             <td>{{ buyer.name }}</td>
             <td>{{ buyer.mobile }}</td>
             <td>{{ buyer.email }}</td>
             <td>{{ buyer.address }}</td>
-            <td><img :src="'http://localhost/Laravel-Practice-ERP/public/img/'+ buyer.photo" alt="" width="80"></td>
+            <td><img :src="getImg(buyer.photo)" alt="" width="80"></td>
+            <!-- <td><img :src="getImgPath + buyer.photo" alt="" width="80"></td> -->
             <td>
               <div class="btn-group" role="group">
                 <button style="background: #0fb9b1; color: #fff;" class="btn" @click="handleView(buyer)">
@@ -303,7 +308,7 @@ const handleFileChange = (event) => {
                 <div class="row mb-3">
                   <strong class="col-sm-3">Photo:</strong>
                   <div class="col-sm-9">
-                    <img :src="'http://localhost/Laravel-Practice-ERP/public/img/'+ formData.photo" alt="Buyer Photo" width="200">
+                    <img :src="getImg(formData.photo)" alt="Buyer Photo" width="200">
                   </div>
                 </div>
               </div>
@@ -322,7 +327,7 @@ const handleFileChange = (event) => {
               <div class="modal-content">
                   <div class="modal-header">
                       <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <button @click="formDataReset" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                       Are you sure you want to delete this?
@@ -336,9 +341,18 @@ const handleFileChange = (event) => {
       </div>
 
     </div>
+    <div class="card-footer border-top">
+      <Bootstrap5Pagination class="m-0" :data="buyers" @pagination-change-page="getData"/>
+    </div>
   </div>
   </div>
 </template>
 
 <style scoped>
+th{
+  font-weight: bold !important;
+}
+.card-footer {
+  padding: 12px 16px!important;
+}
 </style>
