@@ -1,5 +1,5 @@
 // export default 'http://localhost/Laravel-Practice-ERP/public/img/'; // Image Path URL
-const imgURL = 'http://localhost/Laravel-Practice-ERP/public/img/';
+const imgURL = 'http://localhost/laravel-garments-api/public/img/';
 
 function getImg(photo) {
     if (photo) {

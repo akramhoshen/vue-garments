@@ -10,11 +10,14 @@
       </a>
       <ul class="treeview-menu">
               <li>
-                <a href="#">Purchase</a>
+                <RouterLink :to="{ name: 'Create Purchase'}">Create Purchase</RouterLink>
               </li>
               <li>
-                <a href="#">Purchase Details</a>
+                <RouterLink :to="{ name: 'Manage Purchase'}">Purchase</RouterLink>
               </li>
+              <!-- <li>
+                <a href="#">Purchase Details</a>
+              </li> -->
               <li>
                 <a href="#">Purchase Status</a>
               </li>

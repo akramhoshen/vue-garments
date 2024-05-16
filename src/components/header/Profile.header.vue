@@ -1,5 +1,10 @@
 <script setup>
+import { Cookie } from '@/utils/cookie.js';
 
+const hundleLogout = ()=>{
+  Cookie.deleteCookie("token","/","localhost")
+  window.location.href = "/login";
+}
 </script>
 
 <template>
@@ -14,8 +19,8 @@
           class="bi bi-person fs-4 me-2"></i>Profile</a>
       <a class="dropdown-item d-flex align-items-center" href="settings.html"><i
           class="bi bi-gear fs-4 me-2"></i>Account Settings</a>
-      <a class="dropdown-item d-flex align-items-center" href="login.html"><i
-          class="bi bi-escape fs-4 me-2"></i>Logout</a>
+      <button type="button" class="dropdown-item d-flex align-items-center" @click="hundleLogout"><i
+          class="bi bi-escape fs-4 me-2"></i>Logout</button>
     </div>
   </div>
 </template>
