@@ -1,5 +1,6 @@
-# vue-garments
-Frontend with Vue.js 3 for Garments Managment System Laravel Project
+# About Project
+This is the front end of the Laravel Garments Management System Projects. designed with vue.js 3, by Akram Hoshen
+- **[Download Laravel Backend File](https://github.com/akramhoshen/laravel-garments-api)**
 #
 
 ## Customize configuration
